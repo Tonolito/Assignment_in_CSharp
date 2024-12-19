@@ -1,12 +1,14 @@
 ﻿using Domain.Dtos;
 using Domain.Factories;
+using Domain.Interfaces;
 using Domain.Models;
 
 namespace Business.Tests.Factories;
 
 public class ContactFactory_Tests
 {
-    private readonly ContactFactory _contactFactory = new ();
+    private readonly IContactFactory _contactFactory = new ContactFactory();
+
  
 
     [Fact]
@@ -15,7 +17,7 @@ public class ContactFactory_Tests
         //Arrange
 
         //Act
-        var result = ContactFactory.CreateModel();
+        var result = _contactFactory.CreateModel();
         // Assert
         Assert.NotNull(result);
         Assert.IsType<ContactModel>(result);
@@ -58,7 +60,7 @@ public class ContactFactory_Tests
             County = county,
         };
         //Act
-        var result = ContactFactory.CreateDto(contactModel);
+        var result = _contactFactory.CreateDto(contactModel);
         //Assert
         Assert.NotNull(result);
         Assert.IsType<ContactDto>(result);
@@ -99,7 +101,7 @@ public class ContactFactory_Tests
             County = county
         };
         //Act
-        var result = ContactFactory.CreateContact(contactDto);
+        var result = _contactFactory.CreateContact(contactDto);
         //Assert
         Assert.NotNull(result);
         Assert.IsType<Contact>(result);

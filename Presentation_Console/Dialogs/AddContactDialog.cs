@@ -1,19 +1,21 @@
-﻿using Business.Services;
+﻿using Business.Interface;
+using Business.Services;
 using Domain.Dtos;
 using Domain.Factories;
+using Domain.Interfaces;
 using Domain.Models;
+using Presentation_Console.Interfaces;
 
 namespace Presentation_Console.Dialogs;
 
-public class AddContactDialog
+public class AddContactDialog(IContactFactory contactFactory, IContactService contactService) : IAddContactDialog
 {
-    ContactService contactService = new ContactService();
-
-
+    private readonly IContactService _contactService = contactService;
+    private readonly IContactFactory _contactFactory = contactFactory;
 
     public void AddContactMenu()
     {
-       ContactModel contactModel =  ContactFactory.CreateModel();
+        ContactModel contactModel = _contactFactory.CreateModel();
 
 
         Console.Clear();
@@ -33,7 +35,7 @@ public class AddContactDialog
         Console.WriteLine("Enter your County");
         contactModel.County = Console.ReadLine()!;
 
-        var result = contactService.AddContact(contactModel);
+        _contactService.AddContact(contactModel);
 
 
     }

@@ -1,10 +1,13 @@
-﻿using Business.Services;
+﻿using Business.Interface;
+using Business.Services;
+using Presentation_Console.Interfaces;
 
 namespace Presentation_Console.Dialogs;
 
-public class ViewContactDialog
+public class ViewContactDialog(IContactService contactService) : IViewContactDialog
 {
-    private readonly ContactService _contactService = new ContactService();
+    private readonly IContactService _contactService = contactService;
+
     public void ViewContactMenu()
     {
         Console.Clear();
@@ -12,7 +15,7 @@ public class ViewContactDialog
 
         foreach (var contact in _contactService.GetContacts())
         {
-            
+
             Console.WriteLine("");
             Console.WriteLine($"{contact.Id}");
             Console.WriteLine($"{contact.FirstName} {contact.LastName}");
@@ -20,10 +23,10 @@ public class ViewContactDialog
             Console.WriteLine($"{contact.PhoneNumber}");
             Console.WriteLine($"{contact.Adress}");
             Console.WriteLine($"{contact.ZipCode} {contact.County}");
-            
+
         }
         Console.ReadKey();
     }
-    
+
 
 }

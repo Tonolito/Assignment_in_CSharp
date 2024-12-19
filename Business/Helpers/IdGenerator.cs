@@ -1,9 +1,11 @@
-﻿namespace Business.Helpers;
+﻿using Business.Interface;
 
-public class IdGenerator
+namespace Business.Helpers;
+
+public class IdGenerator : IIdGenerator
 {
 
-    public static string NewId()
+    public string NewId()
     {
         {
             return Guid.NewGuid().ToString();

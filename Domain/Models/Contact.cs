@@ -1,6 +1,8 @@
-﻿namespace Domain.Models;
+﻿using Domain.Interfaces;
 
-public class Contact
+namespace Domain.Models;
+
+public class Contact : IContact
 {
     public string Id { get; set; } = null!;
 

@@ -1,24 +1,23 @@
 ﻿using Domain.Dtos;
+using Domain.Interfaces;
 using Domain.Models;
 
 namespace Domain.Factories;
 
-public class ContactFactory
+public class ContactFactory : IContactFactory
 {
-
-
     // instantiate Contact model
-    public static ContactModel CreateModel()
+    public ContactModel CreateModel()
     {
         return new ContactModel();
     }
 
-    
-    public static ContactDto CreateDto(ContactModel model)
+
+    public ContactDto CreateDto(ContactModel model)
     {
         return new ContactDto
         {
-           // ID I BUSINESS SERVICE
+            // ID I BUSINESS SERVICE
             FirstName = model.FirstName,
             LastName = model.LastName,
             Email = model.Email,
@@ -29,9 +28,9 @@ public class ContactFactory
 
         };
     }
-  
-   
-    public static Contact CreateContact(ContactDto contactDto)
+
+
+    public Contact CreateContact(ContactDto contactDto)
     {
         return new Contact
         {

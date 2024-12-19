@@ -1,10 +1,11 @@
-﻿using Domain.Models;
+﻿using Domain.Interfaces;
+using Domain.Models;
 
 namespace Domain.Dtos;
 
-public class ContactDto
+public class ContactDto : IContactDto
 {
-       
+
     public string Id { get; set; } = null!;
 
     public string FirstName { get; set; } = null!;

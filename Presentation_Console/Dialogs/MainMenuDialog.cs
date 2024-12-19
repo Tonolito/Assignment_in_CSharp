@@ -1,9 +1,12 @@
-﻿namespace Presentation_Console.Dialogs;
+﻿using Presentation_Console.Interfaces;
 
-public class MainMenuDialog
+namespace Presentation_Console.Dialogs;
+
+public class MainMenuDialog(IAddContactDialog addContactDialog, IViewContactDialog viewContactDialog,IUpdateContactDialog updateContactDialog) : IMainMenuDialog
 {
-    AddContactDialog AddContactDialog = new AddContactDialog();
-    ViewContactDialog ViewContactDialog = new ViewContactDialog();
+    private readonly IAddContactDialog _AddContactDialog = addContactDialog;
+    private readonly IViewContactDialog _viewContactDialog = viewContactDialog;
+    private readonly IUpdateContactDialog _updateContactDialog = updateContactDialog;
     public void Run()
     {
         while (true)
@@ -13,36 +16,37 @@ public class MainMenuDialog
             OptionSwitch(input!);
         }
 
-       
+
     }
 
 
-    public void MainMenu() 
+    public void MainMenu()
     {
-            Console.Clear();
-            Console.WriteLine("Welcome to your Contact book!");
-            Console.WriteLine("1. Add Contact");
-            Console.WriteLine("2. View Contacts");
-            Console.WriteLine("3. Update Contact");
-            Console.WriteLine("4. Delete Contact");
-            Console.WriteLine("Q. Quit");
-            Console.WriteLine("");  
-        
+        Console.Clear();
+        Console.WriteLine("Welcome to your Contact book!");
+        Console.WriteLine("1. Add Contact");
+        Console.WriteLine("2. View Contacts");
+        Console.WriteLine("3. Update Contact");
+        Console.WriteLine("4. Delete Contact");
+        Console.WriteLine("Q. Quit");
+        Console.WriteLine("");
+
 
 
     }
 
-    public  void OptionSwitch(string input)
+    public void OptionSwitch(string input)
     {
         switch (input.ToLower())
         {
             case "1":
-                AddContactDialog.AddContactMenu();
+                _AddContactDialog.AddContactMenu();
                 break;
             case "2":
-                ViewContactDialog.ViewContactMenu();
+                _viewContactDialog.ViewContactMenu();
                 break;
             case "3":
+                _updateContactDialog.UpdateContactMenu();
                 break;
             case "4":
                 break;

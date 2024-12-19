@@ -1,7 +1,9 @@
-﻿namespace Domain.Models;
+﻿using Domain.Interfaces;
+
+namespace Domain.Models;
 
 // Model of a Contact
-public class ContactModel
+public class ContactModel : IContactModel
 {
     public string FirstName { get; set; } = null!;
 

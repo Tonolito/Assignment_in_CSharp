@@ -7,6 +7,7 @@ namespace Business.Interface
         bool AddContact(ContactModel model);
         IEnumerable<Contact> GetContacts();
 
+        bool UpdateContact(Contact contact);
 
     }
 }
