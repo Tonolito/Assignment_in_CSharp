@@ -25,7 +25,7 @@ public class ViewContactDialog(IContactService contactService) : IViewContactDia
             Console.WriteLine($"{contact.ZipCode} {contact.County}");
 
         }
-        Console.ReadKey();
+       
     }
 
 

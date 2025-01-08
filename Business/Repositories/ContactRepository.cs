@@ -1,7 +1,7 @@
 ﻿using Business.Interface;
 using Data.Interfaces;
 using Data.Services;
-using Domain.Dtos;
+using Domain.Models;
 using System.Text.Json;
 
 namespace Business.Repositories;
@@ -14,7 +14,7 @@ public class ContactRepository(IFileService fileService) : IContactRepository
 
     };
 
-    public bool SaveContacts(List<ContactDto> contacts)
+    public bool SaveContacts(List<ContactEntity> contacts)
     {
         try
         {
@@ -30,12 +30,12 @@ public class ContactRepository(IFileService fileService) : IContactRepository
 
     }
 
-    public List<ContactDto>? GetContacts()
+    public List<ContactEntity>? GetContacts()
     {
         try
         {
             var json = _fileService.ReadContactFile();
-            var contacts = JsonSerializer.Deserialize<List<ContactDto>>(json);
+            var contacts = JsonSerializer.Deserialize<List<ContactEntity>>(json);
 
             return contacts;
         }

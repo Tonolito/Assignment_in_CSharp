@@ -7,15 +7,15 @@ namespace Domain.Factories;
 public class ContactFactory : IContactFactory
 {
     // instantiate Contact model
-    public ContactModel CreateModel()
+    public ContactDto CreateDto()
     {
-        return new ContactModel();
+        return new Dtos.ContactDto();
     }
 
 
-    public ContactDto CreateDto(ContactModel model)
+    public ContactEntity CreateEntity(ContactDto model)
     {
-        return new ContactDto
+        return new Models.ContactEntity
         {
             // ID I BUSINESS SERVICE
             FirstName = model.FirstName,
@@ -30,18 +30,18 @@ public class ContactFactory : IContactFactory
     }
 
 
-    public Contact CreateContact(ContactDto contactDto)
+    public Contact CreateContact(ContactEntity contactEntity)
     {
         return new Contact
         {
-            Id = contactDto.Id,
-            FirstName = contactDto.FirstName,
-            LastName = contactDto.LastName,
-            Email = contactDto.Email,
-            PhoneNumber = contactDto.PhoneNumber,
-            Adress = contactDto.Adress,
-            ZipCode = contactDto.ZipCode,
-            County = contactDto.County,
+            Id = contactEntity.Id,
+            FirstName = contactEntity.FirstName,
+            LastName = contactEntity.LastName,
+            Email = contactEntity.Email,
+            PhoneNumber = contactEntity .PhoneNumber,
+            Adress = contactEntity.Adress,
+            ZipCode = contactEntity.ZipCode,
+            County = contactEntity.County,
 
         };
     }

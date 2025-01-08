@@ -13,9 +13,10 @@ public class UpdateContactDialog(IContactService contactService, IViewContactDia
     public void UpdateContactMenu()
     {
         Console.Clear();
-        Console.WriteLine("--- Update Contact ---");
+        
 
         _viewContactDialog.ViewContactMenu();
+        Console.WriteLine("--- Update Contact ---");
 
         Console.WriteLine("Write the firstname of the contact you want to update.");
         var input = Console.ReadLine();
@@ -38,7 +39,7 @@ public class UpdateContactDialog(IContactService contactService, IViewContactDia
                 {
                     case "1":
                         Console.WriteLine("Write a new Firstname:");
-                        contact.FirstName = Console.ReadLine();
+                        contact.FirstName = Console.ReadLine()!;
                         break;
 
                     case "2":
@@ -48,54 +49,41 @@ public class UpdateContactDialog(IContactService contactService, IViewContactDia
 
                     case "3":
                         Console.WriteLine("Write a new Email:");
-                        contact.Email = Console.ReadLine();
+                        contact.Email = Console.ReadLine()!;
                         break;
 
                     case "4":
                         Console.WriteLine("Write a new Phonenumber:");
-                        contact.PhoneNumber = Console.ReadLine();
+                        contact.PhoneNumber = Console.ReadLine()!;
                         break;
 
                     case "5":
                         Console.WriteLine("Write a new Address:");
-                        contact.Adress = Console.ReadLine();
+                        contact.Adress = Console.ReadLine()!;
                         break;
 
                     case "6":
                         Console.WriteLine("Write a new Zipcode:");
-                        contact.ZipCode = Console.ReadLine();
+                        contact.ZipCode = Console.ReadLine()!;
                         break;
 
                     case "7":
                         Console.WriteLine("Write a new County:");
-                        contact.County = Console.ReadLine();
+                        contact.County = Console.ReadLine()!;
                         break;
 
                     default:
-                        Console.WriteLine("Invalid option.");
+                        Console.WriteLine("Not a valid option. Choose 1, 2, 3, 4, 5, 6, or 7.");
                         break;
                 }
-                var updated = _contactService.UpdateContact(contact);   
-                if (updated)
-                {
-                    Console.WriteLine("Contact updated successfully.");
-                }
-                else
-                {
-                    Console.WriteLine("Failed to update the contact.");
-                }
+                _contactService.UpdateContact(contact);
             }
             else
             {
                 Console.WriteLine("Check you spelling");
             }
         }
-       
-       
-        
-        
 
-        Console.ReadKey();
     }
 
 }

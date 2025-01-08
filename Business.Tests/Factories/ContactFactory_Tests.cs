@@ -18,7 +18,7 @@ public class ContactFactory_Tests
         var result = _contactFactory.CreateModel();
         // Assert
         Assert.NotNull(result);
-        Assert.IsType<ContactModel>(result);
+        Assert.IsType<ContactDto>(result);
         
     }
 
@@ -47,7 +47,7 @@ public class ContactFactory_Tests
     public void CreateDto_ShouldReturnContactDto(string firstName, string lastName, string email, string phoneNumber, string adress, string zipCode, string county)
     {
         //Arrange
-        ContactModel contactModel = new ContactModel() 
+        ContactDto contactModel = new Domain.Dtos.ContactDto() 
         { 
             FirstName = firstName,
             LastName = lastName,
@@ -61,7 +61,7 @@ public class ContactFactory_Tests
         var result = _contactFactory.CreateDto(contactModel);
         //Assert
         Assert.NotNull(result);
-        Assert.IsType<ContactDto>(result);
+        Assert.IsType<ContactEntity>(result);
         Assert.Equal(contactModel.FirstName, result.FirstName);
         Assert.Equal(contactModel.LastName, result.LastName);
         Assert.Equal(contactModel.Email, result.Email);
@@ -87,7 +87,7 @@ public class ContactFactory_Tests
     public void CreateContact_ShouldReturnContact(string id, string firstName, string lastName, string email, string phoneNumber, string adress, string zipCode, string county)
     {
         //Arrange
-        ContactDto contactDto = new ContactDto()
+        ContactEntity contactDto = new Domain.Models.ContactEntity()
         {
             Id = id,
             FirstName = firstName,

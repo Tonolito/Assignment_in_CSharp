@@ -3,7 +3,6 @@ using Business.Services;
 using Domain.Dtos;
 using Domain.Factories;
 using Domain.Interfaces;
-using Domain.Models;
 using Presentation_Console.Interfaces;
 
 namespace Presentation_Console.Dialogs;
@@ -15,27 +14,27 @@ public class AddContactDialog(IContactFactory contactFactory, IContactService co
 
     public void AddContactMenu()
     {
-        ContactModel contactModel = _contactFactory.CreateModel();
+        ContactDto contactDto = _contactFactory.CreateDto();
 
 
         Console.Clear();
         Console.WriteLine("--- ADD CONTACT ---");
         Console.WriteLine("Enter your Firstname: ");
-        contactModel.FirstName = Console.ReadLine()!;
+        contactDto.FirstName = Console.ReadLine()!;
         Console.WriteLine("Enter your Lastname");
-        contactModel.LastName = Console.ReadLine()!;
+        contactDto.LastName = Console.ReadLine()!;
         Console.WriteLine("Enter your Email");
-        contactModel.Email = Console.ReadLine()!;
+        contactDto.Email = Console.ReadLine()!;
         Console.WriteLine("Enter your Phonenumber");
-        contactModel.PhoneNumber = Console.ReadLine()!;
+        contactDto.PhoneNumber = Console.ReadLine()!;
         Console.WriteLine("Enter your Adress");
-        contactModel.Adress = Console.ReadLine()!;
+        contactDto.Adress = Console.ReadLine()!;
         Console.WriteLine("Enter your Zip code");
-        contactModel.ZipCode = Console.ReadLine()!;
+        contactDto.ZipCode = Console.ReadLine()!;
         Console.WriteLine("Enter your County");
-        contactModel.County = Console.ReadLine()!;
+        contactDto.County = Console.ReadLine()!;
 
-        _contactService.AddContact(contactModel);
+        _contactService.AddContact(contactDto);
 
 
     }

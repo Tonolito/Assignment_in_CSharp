@@ -1,10 +1,10 @@
-﻿using Domain.Dtos;
+﻿using Domain.Models;
 
 namespace Business.Interface
 {
     public interface IContactRepository
     {
-        List<ContactDto>? GetContacts();
-        bool SaveContacts(List<ContactDto> contacts);
+        List<ContactEntity>? GetContacts();
+        bool SaveContacts(List<ContactEntity> contacts);
     }
 }

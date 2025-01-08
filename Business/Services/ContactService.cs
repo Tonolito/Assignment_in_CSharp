@@ -15,15 +15,15 @@ public class ContactService(IContactFactory contactFactory, IContactRepository c
     private readonly IContactFactory _contactFactory = contactFactory;
     private readonly IContactRepository _contactRepository = contactRepository;
     private readonly IIdGenerator _idGenerator = idGenerator;
-    private List<ContactDto> _contacts = [];
+    private List<ContactEntity> _contacts = [];
 
-    public bool AddContact(ContactModel model)
+    public bool AddContact(ContactDto dto)
     {
         try
         {
-            ContactDto contactDto = _contactFactory.CreateDto(model);
-            contactDto.Id = _idGenerator.NewId();
-            _contacts.Add(contactDto);
+            ContactEntity contactEntity = _contactFactory.CreateEntity(dto);
+            contactEntity.Id = _idGenerator.NewId();
+            _contacts.Add(contactEntity);
             var result = _contactRepository.SaveContacts(_contacts);
 
 
@@ -65,6 +65,21 @@ public class ContactService(IContactFactory contactFactory, IContactRepository c
             existingContact.Adress = contact.Adress;
             existingContact.ZipCode = contact.ZipCode;
             existingContact.County = contact.County;
+
+            _contactRepository.SaveContacts(_contacts);
+            return true;
+        }
+        return false;
+    }
+
+    public bool DeleteContact(Contact contact)
+    {
+        var existingContact = _contacts.FirstOrDefault(c => c.Id == contact.Id);
+        if (existingContact != null)
+        {
+            _contacts.Remove(existingContact);
+
+            _contactRepository.SaveContacts(_contacts);
             return true;
         }
         return false;

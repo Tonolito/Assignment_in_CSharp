@@ -26,6 +26,7 @@ var host = Host.CreateDefaultBuilder()
         services.AddSingleton<IAddContactDialog, AddContactDialog>();
         services.AddSingleton<IViewContactDialog, ViewContactDialog>();
         services.AddSingleton<IUpdateContactDialog, UpdateContactDialog>();
+        services.AddSingleton<IDeleteContactDialog, DeleteContactDialog>();
         services.AddSingleton<IMainMenuDialog, MainMenuDialog>();
         
         
