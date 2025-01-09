@@ -43,4 +43,17 @@ public partial class ContactUpdateViewModel : ObservableObject
         }
 
     }
+    [RelayCommand]
+    private void Delete()
+    {
+        var result = _contactService.DeleteContact(Contact);
+        if (result)
+        {
+            // HÄMTA UR MainViewModel
+            var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
+            // Den sida vi byter till
+            mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<ContactListViewModel>();
+        }
+
+    }
 }

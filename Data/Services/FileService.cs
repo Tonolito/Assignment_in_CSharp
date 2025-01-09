@@ -83,6 +83,7 @@ public class FileService : IFileService
             CreateFile();
 
             return File.ReadAllText(_filePath);
+            
         }
         
         catch (Exception ex)

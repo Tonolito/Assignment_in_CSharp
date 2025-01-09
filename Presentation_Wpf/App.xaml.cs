@@ -29,11 +29,11 @@ namespace Presentation_Wpf
             _host = Host.CreateDefaultBuilder()
                 .ConfigureServices(services =>
                 {
-                    services.AddTransient<IContactService, ContactService>();
-                    services.AddTransient<IContactFactory, ContactFactory>();
-                    services.AddTransient<IContactRepository, ContactRepository>();
-                    services.AddTransient<IFileService, FileService>();
-                    services.AddTransient<IIdGenerator, IdGenerator>();
+                    services.AddSingleton<IContactService, ContactService>();
+                    services.AddSingleton<IContactFactory, ContactFactory>();
+                    services.AddSingleton<IContactRepository, ContactRepository>();
+                    services.AddSingleton<IFileService, FileService>();
+                    services.AddSingleton<IIdGenerator, IdGenerator>();
 
                     services.AddTransient<ContactAddViewModel>();
                     services.AddTransient<ContactListViewModel>();

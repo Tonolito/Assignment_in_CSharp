@@ -16,10 +16,9 @@ public partial class ContactListViewModel : ObservableObject
     {
         _contactService = contactService;
         _serviceProvider = serviceProvider;
-
         // Gör om IEnumerable lista till en grafisk lista
         _contacts = new ObservableCollection<Contact>(_contactService.GetContacts());
-     
+    
     }
 
     // Är en lista, automatisk med flagga
@@ -46,7 +45,7 @@ public partial class ContactListViewModel : ObservableObject
 
         // HÄMTA UR MainViewModel
         var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
-        // Den sida vi byter till
-        mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<ContactDetailsViewModel>();
+        // Den sida vi byter till contactDetailsViewModel;
+        mainViewModel.CurrentViewModel = contactDetailsViewModel;
     }
 }

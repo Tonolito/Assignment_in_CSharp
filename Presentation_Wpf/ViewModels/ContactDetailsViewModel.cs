@@ -9,14 +9,14 @@ namespace Presentation_Wpf.ViewModels;
 
 public partial class ContactDetailsViewModel : ObservableObject
 {
-    private readonly IContactService _contactService;
+    
     private readonly IServiceProvider _serviceProvider;
 
-    public ContactDetailsViewModel(IContactService contactService, IServiceProvider serviceProvider)
+    public ContactDetailsViewModel(IServiceProvider serviceProvider)
     {
-        _contactService = contactService;
+        
         _serviceProvider = serviceProvider;
-    }
+        }
 
     [ObservableProperty]
     private Contact _contact = new();

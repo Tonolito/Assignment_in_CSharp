@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="New User" FontSize="20" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="New Contact" FontSize="20" FontWeight="Bold"/>
 
         <StackPanel Grid.Row="1" Margin="0 20 0 0">
             <TextBlock Text="First name" />

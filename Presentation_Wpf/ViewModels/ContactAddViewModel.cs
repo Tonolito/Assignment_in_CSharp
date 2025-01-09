@@ -39,6 +39,7 @@ public partial class ContactAddViewModel : ObservableObject
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             // Den sida vi byter till
             mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<ContactListViewModel>();
+            
         }
 
     }

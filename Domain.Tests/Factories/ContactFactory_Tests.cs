@@ -12,12 +12,12 @@ public class ContactFactory_Tests
  
 
     [Fact]
-    public void CreateModel_ShouldRetrunNewModel()
+    public void CreateDto_ShouldRetrunNewModel()
     {
         //Arrange
 
         //Act
-        var result = _contactFactory.CreateModel();
+        var result = _contactFactory.CreateDto();
         // Assert
         Assert.NotNull(result);
         Assert.IsType<ContactDto>(result);
@@ -44,12 +44,11 @@ public class ContactFactory_Tests
         "",
         ""
         )]
-    
-
-    public void CreateDto_ShouldReturnContactDto(string firstName, string lastName, string email, string phoneNumber, string adress, string zipCode, string county)
+   
+    public void CreateEntity_ShouldReturnContactDto(string firstName, string lastName, string email, string phoneNumber, string adress, string zipCode, string county)
     {
         //Arrange
-        ContactDto contactModel = new Domain.Dtos.ContactDto() 
+        ContactDto contactDto = new Domain.Dtos.ContactDto() 
         { 
             FirstName = firstName,
             LastName = lastName,
@@ -60,17 +59,17 @@ public class ContactFactory_Tests
             County = county,
         };
         //Act
-        var result = _contactFactory.CreateDto(contactModel);
+        var result = _contactFactory.CreateEntity(contactDto);
         //Assert
         Assert.NotNull(result);
         Assert.IsType<ContactEntity>(result);
-        Assert.Equal(contactModel.FirstName, result.FirstName);
-        Assert.Equal(contactModel.LastName, result.LastName);
-        Assert.Equal(contactModel.Email, result.Email);
-        Assert.Equal(contactModel.PhoneNumber, result.PhoneNumber);
-        Assert.Equal(contactModel.Adress, result.Adress);
-        Assert.Equal(contactModel.ZipCode, result.ZipCode);
-        Assert.Equal(contactModel.County, result.County);
+        Assert.Equal(contactDto.FirstName, result.FirstName);
+        Assert.Equal(contactDto.LastName, result.LastName);
+        Assert.Equal(contactDto.Email, result.Email);
+        Assert.Equal(contactDto.PhoneNumber, result.PhoneNumber);
+        Assert.Equal(contactDto.Adress, result.Adress);
+        Assert.Equal(contactDto.ZipCode, result.ZipCode);
+        Assert.Equal(contactDto.County, result.County);
     }
 
 
@@ -89,7 +88,7 @@ public class ContactFactory_Tests
     public void CreateContact_ShouldReturnContact(string id, string firstName, string lastName, string email, string phoneNumber, string adress, string zipCode, string county)
     {
         //Arrange
-        ContactEntity contactDto = new Domain.Models.ContactEntity()
+        ContactEntity contactEntity = new Domain.Models.ContactEntity()
         {
             Id = id,
             FirstName = firstName,
@@ -101,17 +100,17 @@ public class ContactFactory_Tests
             County = county
         };
         //Act
-        var result = _contactFactory.CreateContact(contactDto);
+        var result = _contactFactory.CreateContact(contactEntity);
         //Assert
         Assert.NotNull(result);
         Assert.IsType<Contact>(result);
-        Assert.Equal(contactDto.Id, result.Id);
-        Assert.Equal(contactDto.FirstName, result.FirstName);
-        Assert.Equal(contactDto.LastName, result.LastName);
-        Assert.Equal(contactDto.Email, result.Email);
-        Assert.Equal(contactDto.PhoneNumber, result.PhoneNumber);
-        Assert.Equal(contactDto.Adress, result.Adress);
-        Assert.Equal(contactDto.ZipCode, result.ZipCode);
-        Assert.Equal(contactDto.County, result.County);
+        Assert.Equal(contactEntity.Id, result.Id);
+        Assert.Equal(contactEntity.FirstName, result.FirstName);
+        Assert.Equal(contactEntity.LastName, result.LastName);
+        Assert.Equal(contactEntity.Email, result.Email);
+        Assert.Equal(contactEntity.PhoneNumber, result.PhoneNumber);
+        Assert.Equal(contactEntity.Adress, result.Adress);
+        Assert.Equal(contactEntity.ZipCode, result.ZipCode);
+        Assert.Equal(contactEntity.County, result.County);
     }
 }

@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="User List" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="0" Text="Contact List" FontSize="20" FontWeight="Bold"/>
             <Button Grid.Column="1" Command="{Binding GoToAddViewCommand}" Content="&#xE710;" FontFamily="Segoe MDL2 Assets" Padding="7 0" />
         </Grid>
 
@@ -41,7 +41,7 @@
                         </StackPanel>
 
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
-                            <Button CommandParameter="{Binding .}" Command="{Binding DataContext.GoToDetailViewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Padding="7 0" Background="Transparent"/>
+                            <Button CommandParameter="{Binding}" Command="{Binding DataContext.GoToDetailViewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Padding="7 0" Background="Transparent"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

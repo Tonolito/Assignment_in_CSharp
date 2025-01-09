@@ -35,7 +35,6 @@ public class ContactService(IContactFactory contactFactory, IContactRepository c
             return false;
         }
 
-
     }
     public IEnumerable<Contact> GetContacts()
     {
