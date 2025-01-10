@@ -6,9 +6,10 @@ namespace Domain.Tests.Services;
 
 public class FileService_Tests
 {
-  
-  
 
+    private readonly string _filePath = $"{Guid.NewGuid().ToString()}.json";
+
+    private readonly string _directoryPath = "Testdata";
     [Fact]
     public void CreateDirectory_ShouldCreateDirectory()
     {
@@ -42,7 +43,7 @@ public class FileService_Tests
         //Arrange
         var content = "test";
 
-        var fileName = $"{Guid.NewGuid().ToString()}.json";
+        var _filePath = $"{Guid.NewGuid().ToString()}.json";
 
         IFileService fileService = new FileService("Test.json");
 
@@ -55,29 +56,52 @@ public class FileService_Tests
         }
         finally
         {
-            if (File.Exists(fileName))
-                File.Delete(fileName);
+            if (File.Exists(_filePath))
+                File.Delete(_filePath);
         }
 
 
     }
-
+    /// <summary>
+    /// Arrange writes the file and save the "content" to the file, then we try to read it. In Assert we check if the content is equal
+    /// </summary>
     [Fact]
-    public void ReadContactFile_ShouldReturnJsonFile()
+    public void ReadContactFile_ShouldReturnFile()
     {
         //Arrange
-        FileService fileService = new FileService();
+        
+        var _filePath = $"{Guid.NewGuid().ToString()}.json";
+        
+        var content = "Some Data";
 
-        var fileName = $"{Guid.NewGuid().ToString()}.json";
+        File.WriteAllText(_filePath, content);
 
+        IFileService fileService = new FileService(_directoryPath, _filePath);
+        fileService.SaveContactToFile(content);
 
-        var expected = "Some Data";
+        try
+        {
+            //Act
+            var result = fileService.ReadContactFile();
 
-        //Act
-        var result = fileService.ReadContactFile();
+            //Assert
+            Assert.Equal(result, content);
+        }
+        finally
+        {       // Hjälp av Chatgpt (Om directory finns så lista alla filer och ta bort readonly osv. Sedan ta bort Directotory
+            if (Directory.Exists(_directoryPath))
+            {
+                foreach (var file in Directory.GetFiles(_directoryPath))
+                {
+                    File.SetAttributes(file, FileAttributes.Normal); // Remove readonly/hidden attributes
+                    File.Delete(file);
+                }
 
-        //Assert
-        Assert.Equal(result, expected);
+           
+                Directory.Delete(_directoryPath);
+            }
+        }
+       
     }
 
    

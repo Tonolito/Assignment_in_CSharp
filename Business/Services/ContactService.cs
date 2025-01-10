@@ -1,5 +1,4 @@
-﻿using Business.Helpers;
-using Business.Interface;
+﻿using Business.Interface;
 using Business.Repositories;
 using Data.Services;
 using Domain.Dtos;
@@ -51,9 +50,14 @@ public class ContactService(IContactFactory contactFactory, IContactRepository c
 
     }
 
-    // FUNGERAR EJ
+    /// <summary>
+    /// Overwrites the existingContacts properties but keeps id. Helped by Chatgpt (var existingContact = _contacts.FirstOrDefault(c => c.Id == contact.Id);) 
+    /// </summary>
+    /// <param name="contact"></param>
+    /// <returns></returns>
     public bool UpdateContact(Contact contact)
     {
+        // Checks if any contact with the id we send in exist. 
         var existingContact = _contacts.FirstOrDefault(c => c.Id == contact.Id);
         if (existingContact != null)
         {

@@ -1,20 +1,23 @@
-﻿//using Business.Helpers;
+﻿using Business.Helpers;
 
-//namespace Business.Tests.Helpers;
+namespace Business.Tests.Helpers;
 
-//public class IdGenerator_Tests
-//{
-//    [Fact]
-//    public void NewId_ShouldReturnStringOfTypeGuid()
-//    {
-//        // Arrange
+public class IdGenerator_Tests
+{
 
-//        // Act
-//        string id = IdGenerator.NewId();
-//        // Assert
-//        Assert.False(string.IsNullOrEmpty(id));
-//        Assert.True(Guid.TryParse(id, out _));
-        
-//    }
+    
+    [Fact]
+    public void NewId_ShouldReturnStringOfTypeGuid()
+    {
+        //Arrange
+        IdGenerator idGenerator = new IdGenerator();
+        //Act
+        var result = idGenerator.NewId();
+        //Assert
+        Assert.NotNull(result);
+        Assert.True(Guid.TryParse(result, out _));
 
-//}
+
+    }
+
+}

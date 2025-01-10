@@ -63,7 +63,7 @@ public class FileService : IFileService
 
             if (!File.Exists(_filePath))
             {
-                File.WriteAllText(_filePath, "");
+                File.WriteAllText(_filePath, "Data");
 
             }
 

@@ -4,8 +4,9 @@ namespace Business.Helpers;
 
 public class IdGenerator : IIdGenerator
 {
-
-    public string NewId()
+    
+    
+    public  string NewId()
     {
         {
             return Guid.NewGuid().ToString();
